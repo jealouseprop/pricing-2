@@ -7,130 +7,155 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #1a2744;
-    --gold: #c9973a;
-    --gold-light: #e8b85c;
-    --cream: #faf8f3;
-    --warm-white: #fff9f0;
-    --text: #2d2d2d;
-    --muted: #7a7a7a;
-    --border: rgba(201,151,58,0.2);
+    --brown:       #6b3a1f;
+    --brown-dark:  #4a2510;
+    --brown-deep:  #2e1608;
+    --gold:        #c8922a;
+    --gold-light:  #e6b84a;
+    --gold-dim:    #a87420;
+    --parchment:   #e8dcc8;
+    --parchment-light: #f2ead8;
+    --parchment-dark:  #d4c4a0;
+    --text:        #2a1a0e;
+    --text-mid:    #5a3a20;
+    --muted:       #8a7060;
+    --border:      rgba(107,58,31,0.15);
+    --item-hover:  #f5ede0;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--cream);
+    background: var(--parchment);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.3'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
   }
 
+  header.leather {
+    background: #6b4226;
+  }
+
   /* ── HEADER ── */
   header {
-    background: var(--navy);
-    padding: 28px 24px 24px;
+    padding: 28px 24px 22px;
     position: relative;
     overflow: hidden;
+    border-bottom: 2px solid #8a6010;
   }
-  header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(201,151,58,0.04) 60px, rgba(201,151,58,0.04) 61px);
-  }
+  header::before { content: none; }
   .header-inner {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 18px;
     max-width: 1200px;
     margin: 0 auto;
   }
   .logo-mark {
-    width: 52px; height: 52px;
+    width: 56px; height: 56px;
     border: 2px solid var(--gold);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
+    background: rgba(0,0,0,0.15);
   }
   .logo-mark span {
     font-family: 'DM Serif Display', serif;
-    font-size: 24px;
+    font-size: 26px;
     color: var(--gold);
   }
+  .header-text { text-align: left; }
   .header-text h1 {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(22px, 3vw, 30px);
     color: #fff;
-    line-height: 1.2;
+    line-height: 1.15;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
   }
   .header-text h1 em { font-style: italic; color: var(--gold-light); }
-  .header-text p {
-    font-size: 11px;
-    letter-spacing: 0.15em;
+  .header-tagline {
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
+    color: var(--gold-light);
     margin-top: 4px;
+    opacity: 0.85;
+  }
+  .header-sheet {
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+  .header-contacts {
+    margin-top: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.78);
+    letter-spacing: 0.02em;
   }
 
   /* ── TERMS BANNER ── */
   .terms-banner {
-    background: var(--gold);
-    padding: 10px 24px;
+    background: #b8841e;
+    padding: 9px 24px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 4px 20px;
+    gap: 3px 18px;
+    border-bottom: 1px solid #8a6010;
   }
   .terms-banner span {
     font-size: 11px;
     font-weight: 500;
-    color: var(--navy);
-    letter-spacing: 0.04em;
+    color: #2e1608;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
-  .terms-banner span::before { content: '✦ '; opacity: 0.6; }
+  .terms-banner span::before { content: '✦ '; opacity: 0.4; }
 
   /* ── MAIN GRID ── */
   main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 24px 20px 44px;
+    padding: 22px 18px 42px;
   }
-
   .columns {
     display: grid;
     grid-template-columns: 1.1fr 1fr 1fr;
-    gap: 18px;
+    gap: 16px;
     align-items: start;
   }
-
-  .col { display: flex; flex-direction: column; gap: 18px; }
+  .col { display: flex; flex-direction: column; gap: 16px; }
 
   /* ── CATEGORY CARD ── */
   .category {
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 14px rgba(26,39,68,0.09);
+    box-shadow: 0 2px 12px rgba(46,22,8,0.18), 0 0 0 1px rgba(107,58,31,0.2);
   }
   .category-header {
-    background: var(--navy);
-    padding: 10px 16px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
     gap: 10px;
+    border-bottom: 2px solid var(--gold-dim);
   }
   .category-icon {
     width: 26px; height: 26px;
-    background: rgba(201,151,58,0.2);
-    border-radius: 6px;
+    background: rgba(200,146,42,0.18);
+    border-radius: 5px;
     display: flex; align-items: center; justify-content: center;
     font-size: 13px;
     flex-shrink: 0;
+    border: 1px solid rgba(200,146,42,0.3);
   }
   .category-icon svg {
-    width: 18px; height: 18px;
+    width: 15px; height: 15px;
     fill: none;
     stroke: var(--gold-light);
     stroke-width: 1.6;
@@ -141,38 +166,40 @@
     font-family: 'DM Serif Display', serif;
     font-size: 15px;
     color: #fff;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
   }
-  .items-grid { background: #fff; }
+
+  /* ── ITEMS ── */
+  .items-grid { background: var(--parchment-light); }
   .item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 14px;
-    border-bottom: 1px solid #f0ede6;
+    padding: 8px 13px;
+    border-bottom: 1px solid var(--parchment-dark);
     transition: background 0.12s;
   }
   .item:last-child { border-bottom: none; }
-  .item:hover { background: var(--warm-white); }
+  .item:hover { background: var(--item-hover); }
   .item-name { font-size: 12.5px; color: var(--text); font-weight: 400; }
   .item-price {
     font-size: 12.5px;
     font-weight: 600;
-    color: var(--navy);
+    color: var(--brown);
     white-space: nowrap;
     margin-left: 10px;
   }
-  .item-price.range { color: var(--navy); }
   .note-row {
-    background: #fffbf3;
-    padding: 7px 14px;
+    background: var(--parchment-dark);
+    padding: 6px 13px;
     font-size: 11px;
     color: var(--muted);
-    border-top: 1px solid #f0ede6;
+    border-top: 1px solid var(--parchment-dark);
     font-style: italic;
   }
 
-  /* ── OTHER SERVICES — no prices, italic list ── */
+  /* ── OTHER SERVICES ── */
   .other-services .item-price {
     font-size: 11px;
     font-weight: 400;
@@ -183,38 +210,46 @@
   footer {
     text-align: center;
     padding: 20px 24px 32px;
-    border-top: 1px solid var(--border);
+    border-top: 2px solid var(--parchment-dark);
     max-width: 1200px;
     margin: 0 auto;
   }
-  footer p { font-size: 13px; color: var(--muted); line-height: 1.8; }
-  footer strong { color: var(--navy); font-weight: 600; }
   .footer-brand {
     font-family: 'DM Serif Display', serif;
     font-size: 17px;
-    color: var(--navy);
+    color: var(--brown);
     margin-bottom: 5px;
     display: block;
   }
+  footer p { font-size: 13px; color: var(--muted); line-height: 1.9; }
+  .footer-contacts {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--brown);
+    font-weight: 500;
+  }
+  .footer-email {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--muted);
+  }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .columns { grid-template-columns: 1fr; }
+  .category-header.leather {
+    background: #6b4226;
   }
-  @media (min-width: 641px) and (max-width: 900px) {
-    .columns { grid-template-columns: 1fr 1fr; }
-  }
+  @media (max-width: 640px) { .columns { grid-template-columns: 1fr; } }
+  @media (min-width: 641px) and (max-width: 900px) { .columns { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
 
-<header>
+<header class="leather">
   <div class="header-inner">
     <div class="logo-mark"><span>C</span></div>
     <div class="header-text">
       <h1>Chambers <em>Home</em> Solutions LLC</h1>
-      <p>General Price Sheet</p>
-      <p style="margin-top:8px; font-size:12px; color:rgba(255,255,255,0.75); letter-spacing:0.03em; text-transform:none;">
+      <p class="header-sheet">General Price Sheet</p>
+      <p class="header-contacts">
         Jacob Chambers &nbsp;·&nbsp; (850) 572-5278 &nbsp;&nbsp;|&nbsp;&nbsp; Noah Jealouse &nbsp;·&nbsp; (321) 405-7575
       </p>
     </div>
@@ -225,7 +260,6 @@
   <span>$100 Service Minimum</span>
   <span>Free Estimates</span>
   <span>Serving the Greater Tallahassee Area</span>
-
 </div>
 
 <main>
@@ -234,31 +268,31 @@
     <!-- COL 1: General -->
     <div class="col">
       <div class="category">
-        <div class="category-header">
+        <div class="category-header leather">
           <div class="category-icon">🏠</div>
           <h2>General</h2>
         </div>
         <div class="items-grid">
-          <div class="item"><span class="item-name">Trash / Junk Haul Away</span><span class="item-price range">$75+</span></div>
-          <div class="item"><span class="item-name">Blinds</span><span class="item-price range">$30+</span></div>
-          <div class="item"><span class="item-name">Fire Alarms</span><span class="item-price range">$75+</span></div>
-          <div class="item"><span class="item-name">Locks / Doorknobs</span><span class="item-price range">$50–$150</span></div>
-          <div class="item"><span class="item-name">Screen Replacement</span><span class="item-price range">$50+</span></div>
-          <div class="item"><span class="item-name">Grout Refresh</span><span class="item-price range">$100+</span></div>
-          <div class="item"><span class="item-name">Caulk Refresh</span><span class="item-price range">$50+</span></div>
-          <div class="item"><span class="item-name">Mold Treatment</span><span class="item-price range">$100+</span></div>
+          <div class="item"><span class="item-name">Trash / Junk Haul Away</span><span class="item-price">$75+</span></div>
+          <div class="item"><span class="item-name">Blinds</span><span class="item-price">$30+</span></div>
+          <div class="item"><span class="item-name">Fire Alarms</span><span class="item-price">$75+</span></div>
+          <div class="item"><span class="item-name">Locks / Doorknobs</span><span class="item-price">$50–$150</span></div>
+          <div class="item"><span class="item-name">Screen Replacement</span><span class="item-price">$50+</span></div>
+          <div class="item"><span class="item-name">Grout Refresh</span><span class="item-price">$100+</span></div>
+          <div class="item"><span class="item-name">Caulk Refresh</span><span class="item-price">$50+</span></div>
+          <div class="item"><span class="item-name">Mold Treatment</span><span class="item-price">$100+</span></div>
           <div class="item"><span class="item-name">Towel Bar</span><span class="item-price">$50</span></div>
           <div class="item"><span class="item-name">Toilet Paper Holder</span><span class="item-price">$30</span></div>
-          <div class="item"><span class="item-name">Mirror Install</span><span class="item-price range">$75–$200</span></div>
+          <div class="item"><span class="item-name">Mirror Install</span><span class="item-price">$75–$200</span></div>
           <div class="item"><span class="item-name">Kwikset Rekey</span><span class="item-price">$25</span></div>
-          <div class="item"><span class="item-name">Dryer Vent Cleaning</span><span class="item-price range">$50+</span></div>
-          <div class="item"><span class="item-name">Wood Rot Repair</span><span class="item-price range">$100+</span></div>
-          <div class="item"><span class="item-name">Interior Door</span><span class="item-price range">$150+</span></div>
-          <div class="item"><span class="item-name">Interior Door / Jamb + Trim</span><span class="item-price range">$300+</span></div>
-          <div class="item"><span class="item-name">Exterior Door</span><span class="item-price range">$200+</span></div>
-          <div class="item"><span class="item-name">Exterior Door / Jamb, Threshold + Trim</span><span class="item-price range">$400+</span></div>
-          <div class="item"><span class="item-name">Fireplace Repairs</span><span class="item-price range">$75+</span></div>
-          <div class="item"><span class="item-name">Cabinet Floor Replacement</span><span class="item-price range">$250+</span></div>
+          <div class="item"><span class="item-name">Dryer Vent Cleaning</span><span class="item-price">$50+</span></div>
+          <div class="item"><span class="item-name">Wood Rot Repair</span><span class="item-price">$100+</span></div>
+          <div class="item"><span class="item-name">Interior Door</span><span class="item-price">$150+</span></div>
+          <div class="item"><span class="item-name">Interior Door / Jamb + Trim</span><span class="item-price">$300+</span></div>
+          <div class="item"><span class="item-name">Exterior Door</span><span class="item-price">$200+</span></div>
+          <div class="item"><span class="item-name">Exterior Door / Jamb, Threshold + Trim</span><span class="item-price">$400+</span></div>
+          <div class="item"><span class="item-name">Fireplace Repairs</span><span class="item-price">$75+</span></div>
+          <div class="item"><span class="item-name">Cabinet Floor Replacement</span><span class="item-price">$250+</span></div>
           <div class="item"><span class="item-name">Cabinet Hinge Repair</span><span class="item-price">$75</span></div>
         </div>
       </div>
@@ -267,59 +301,53 @@
     <!-- COL 2: Plumbing + Electrical + Appliance -->
     <div class="col">
       <div class="category">
-        <div class="category-header">
+        <div class="category-header leather">
           <div class="category-icon">🔧</div>
           <h2>Plumbing</h2>
         </div>
         <div class="items-grid">
-          <div class="item"><span class="item-name">Tub Refinishing</span><span class="item-price range">$500+</span></div>
+          <div class="item"><span class="item-name">Tub Refinishing</span><span class="item-price">$500+</span></div>
           <div class="item"><span class="item-name">Bathroom Faucet</span><span class="item-price">$75</span></div>
           <div class="item"><span class="item-name">Kitchen Faucet</span><span class="item-price">$125</span></div>
-          <div class="item"><span class="item-name">Toilet Swap</span><span class="item-price range">$225–$300</span></div>
+          <div class="item"><span class="item-name">Toilet Swap</span><span class="item-price">$225–$300</span></div>
           <div class="item"><span class="item-name">Kitchen Spray Wand</span><span class="item-price">$50</span></div>
-          <div class="item"><span class="item-name">Garbage Disposal</span><span class="item-price range">$75–$125</span></div>
-          <div class="item"><span class="item-name">Standard Plumbing Leak</span><span class="item-price range">$75+</span></div>
-          <div class="item"><span class="item-name">Vanity Install</span><span class="item-price range">$250–$400</span></div>
+          <div class="item"><span class="item-name">Garbage Disposal</span><span class="item-price">$75–$125</span></div>
+          <div class="item"><span class="item-name">Standard Plumbing Leak</span><span class="item-price">$75+</span></div>
+          <div class="item"><span class="item-name">Vanity Install</span><span class="item-price">$250–$400</span></div>
           <div class="item"><span class="item-name">Valve Replacement</span><span class="item-price">$75</span></div>
         </div>
       </div>
 
       <div class="category">
-        <div class="category-header">
+        <div class="category-header leather">
           <div class="category-icon">⚡</div>
           <h2>Electrical</h2>
         </div>
         <div class="items-grid">
-          <div class="item"><span class="item-name">Receptacle Replacement</span><span class="item-price range">$25–$50</span></div>
-          <div class="item"><span class="item-name">Fan Repair / Replacement</span><span class="item-price range">$25–$300</span></div>
-          <div class="item"><span class="item-name">Light Fixture</span><span class="item-price range">$50–$150</span></div>
+          <div class="item"><span class="item-name">Receptacle Replacement</span><span class="item-price">$25–$50</span></div>
+          <div class="item"><span class="item-name">Fan Repair / Replacement</span><span class="item-price">$25–$300</span></div>
+          <div class="item"><span class="item-name">Light Fixture</span><span class="item-price">$50–$150</span></div>
         </div>
       </div>
 
-      <!-- Appliance moved under Electrical -->
       <div class="category">
-        <div class="category-header">
-          <!-- 3-prong appliance plug SVG icon -->
+        <div class="category-header leather">
           <div class="category-icon">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-              <!-- plug body -->
               <rect x="4" y="7" width="8" height="6" rx="1.5"/>
-              <!-- prong top-left -->
               <line x1="5.5" y1="4" x2="5.5" y2="7"/>
-              <!-- prong top-right -->
               <line x1="10.5" y1="4" x2="10.5" y2="7"/>
-              <!-- ground prong center-bottom -->
               <line x1="8" y1="13" x2="8" y2="15.5"/>
             </svg>
           </div>
           <h2>Appliance</h2>
         </div>
         <div class="items-grid">
-          <div class="item"><span class="item-name">Refrigerator Install</span><span class="item-price range">$200–$250</span></div>
+          <div class="item"><span class="item-name">Refrigerator Install</span><span class="item-price">$200–$250</span></div>
           <div class="item"><span class="item-name">Stove Install*</span><span class="item-price">$250</span></div>
-          <div class="item"><span class="item-name">Microwave Swap</span><span class="item-price range">$100+</span></div>
-          <div class="item"><span class="item-name">Range Hood Repairs / Replacement</span><span class="item-price range">$75+</span></div>
-          <div class="item"><span class="item-name">Dishwasher Install</span><span class="item-price range">$200+</span></div>
+          <div class="item"><span class="item-name">Microwave Swap</span><span class="item-price">$100+</span></div>
+          <div class="item"><span class="item-name">Range Hood Repairs / Replacement</span><span class="item-price">$75+</span></div>
+          <div class="item"><span class="item-name">Dishwasher Install</span><span class="item-price">$200+</span></div>
         </div>
         <div class="note-row">* Gas line connection not included. Additional charges may apply.</div>
       </div>
@@ -328,8 +356,7 @@
     <!-- COL 3: Drywall + Painting + Other Services -->
     <div class="col">
       <div class="category">
-        <div class="category-header">
-          <!-- Drywall taping knife SVG icon -->
+        <div class="category-header leather">
           <div class="category-icon">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
               <line x1="2" y1="5" x2="14" y2="5"/>
@@ -340,15 +367,15 @@
           <h2>Drywall</h2>
         </div>
         <div class="items-grid">
-          <div class="item"><span class="item-name">Small Drywall Patch <span style="font-size:11px;color:var(--muted)">(1 sq/ft)</span></span><span class="item-price range">$125+</span></div>
-          <div class="item"><span class="item-name">Medium Drywall Patch <span style="font-size:11px;color:var(--muted)">(5 sq/ft)</span></span><span class="item-price range">$200+</span></div>
-          <div class="item"><span class="item-name">Large Drywall Patch <span style="font-size:11px;color:var(--muted)">(10 sq/ft)</span></span><span class="item-price range">$300+</span></div>
-          <div class="item"><span class="item-name">General Spackling</span><span class="item-price range">$25+</span></div>
+          <div class="item"><span class="item-name">Small Drywall Patch <span style="font-size:11px;color:var(--muted)">(1 sq/ft)</span></span><span class="item-price">$125+</span></div>
+          <div class="item"><span class="item-name">Medium Drywall Patch <span style="font-size:11px;color:var(--muted)">(5 sq/ft)</span></span><span class="item-price">$200+</span></div>
+          <div class="item"><span class="item-name">Large Drywall Patch <span style="font-size:11px;color:var(--muted)">(10 sq/ft)</span></span><span class="item-price">$300+</span></div>
+          <div class="item"><span class="item-name">General Spackling</span><span class="item-price">$25+</span></div>
         </div>
       </div>
 
       <div class="category">
-        <div class="category-header">
+        <div class="category-header leather">
           <div class="category-icon">🖌️</div>
           <h2>Painting</h2>
         </div>
@@ -356,13 +383,13 @@
           <div class="item"><span class="item-name">Small Patch Paint</span><span class="item-price">$25</span></div>
           <div class="item"><span class="item-name">Medium Patch Paint</span><span class="item-price">$50</span></div>
           <div class="item"><span class="item-name">Large Patch Paint</span><span class="item-price">$75</span></div>
-          <div class="item"><span class="item-name">Per Room*</span><span class="item-price range">$1.30/sqft</span></div>
+          <div class="item"><span class="item-name">Per Room*</span><span class="item-price">$1.30/sqft</span></div>
         </div>
         <div class="note-row">* Walls only</div>
       </div>
 
       <div class="category">
-        <div class="category-header">
+        <div class="category-header leather">
           <div class="category-icon">📋</div>
           <h2>Other Services</h2>
         </div>
@@ -383,9 +410,10 @@
   <p>All prices are starting estimates and subject to change based on scope.<br>
   Contact us for a free in-home estimate.<br>
   $75 trip fee* &nbsp;·&nbsp; Prices subject to change*</p>
-  <p style="margin-top:10px; font-size:13px; color:var(--navy); font-weight:500;">
+  <p class="footer-contacts">
     Jacob Chambers &nbsp;·&nbsp; (850) 572-5278 &nbsp;&nbsp;|&nbsp;&nbsp; Noah Jealouse &nbsp;·&nbsp; (321) 405-7575
   </p>
+  <p class="footer-email">chambershs.llc@gmail.com</p>
 </footer>
 
 </body>
